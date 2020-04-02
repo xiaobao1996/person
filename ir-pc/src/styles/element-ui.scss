@@ -1,0 +1,241 @@
+@import "element-ui-variables";
+// cover some element-ui styles
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+
+// to fixed https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 8px;
+  .el-dialog__header{
+    background: #f8f8f8;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 1px solid #eeeeee;
+    .el-dialog__headerbtn{
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+    }
+  }
+}
+
+.preview-img{
+  .el-dialog__header{
+    background: none !important;
+    border-bottom: none !important;
+  }
+}
+
+// refine element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+// dropdown
+.el-dropdown-menu {
+  a {
+    display: block
+  }
+}
+.el-pagination{
+  white-space: normal;
+  float: right;
+}
+.message-input-area .el-col-24{
+  margin-bottom: 14px;
+  cursor: pointer;
+}
+.user-info-head .el-badge__content.is-fixed{
+  top: 13px;
+}
+.hover-header-dialog  .message-warn .el-badge__content.is-fixed{
+  top: 9px;
+  right: 7px;
+}
+.message-option-area .el-badge__content.is-fixed{
+  top: 13px;
+  right: 8px;
+}
+.message-option-area .el-badge{
+  margin-left: -5px;
+}
+.option-input-area .el-form-item__content{
+  line-height: 0px;
+}
+.is-hover-shadow .el-card__body{
+  background-color: #f7f7f7;
+}
+.el-message-box.exit-box{
+  width: 448px;
+  height: 260px;
+  border-radius: 6px;
+}
+.exit-box .el-icon-warning:before{
+  content: "";
+}
+.exit-box .el-message-box__status+.el-message-box__message{
+  padding: 0;
+  text-align: center;
+}
+.exit-box .el-message-box__title{
+  color: #222;
+}
+.exit-box .el-message-box__content{
+  padding-top: 46px;
+  font-size: 16px;
+  color: #666;
+}
+.exit-box .el-message-box__btns{
+  padding: 30px 90px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.exit-box .el-button--small, .exit-box .el-button--small.is-round{
+  padding: 10px 35px;
+  font-size: 14px;
+  color: #666;
+  background-color: #dddddd;
+  border: 0px solid #000;
+  border-radius: 5px;
+}
+.exit-box .el-button--small:hover, .exit-box .el-button--small.is-round:hover{
+  color: #666;
+  background-color: #dddddd;
+}
+.exit-box .el-button--primary{
+  padding: 10px 35px;
+  color: #fff;
+  background-color: #02b2b5;
+}
+.exit-box .el-button--primary:hover{
+  color: #fff;
+  background-color: #02b2b5;
+}
+.exit-box .el-message-box__headerbtn .el-message-box__close{
+  font-size: 22px;
+}
+
+.el-table .cell{
+  line-height: 23px;
+}
+
+.el-table th, .el-table td{
+  padding: 4px 0;
+}
+
+.el-table .el-table__header{
+
+  th {
+    padding: 9px 0;
+    background: $table-header-bg;
+    color: $table-header-text;
+  }
+}
+
+.el-pagination{
+  padding : 10px 5px 2px 5px;
+}
+.el-form-item.is-required:not(.is-no-asterisk) > .el-form-item__label:before, .el-form-item.is-required:not(.is-no-asterisk) .el-form-item__label-wrap > .el-form-item__label:before{
+  margin-right: initial;
+}
+
+.edit-nav {
+  .el-radio-button__inner{
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: #f2f2f2;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: $--color-primary;
+}
+.avatar-uploader-icon {
+  font-size: 70px;
+  color: #e2e2e2;
+  width: 150px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+}
+.avatar {
+  width: 150px;
+  height: 200px;
+  display: block;
+}
+.el-button--small{
+  padding: 9px 20px;
+  font-size: 14px;
+}
+
+.el-input--small{
+  font-size: 14px;
+}
+
+.el-button + .el-button{
+  margin-left: 0;
+}
+
+.el-upload-dragger{
+  width: 440px;
+  //border: 1px solid $--color-primary;
+}
+.el-upload-list__item{
+  background: #f5f8f8;
+  height: 28px;
+  line-height: 28px;
+}
+
+.el-upload-list__item-name [class^="el-icon"]{
+  font-size: 20px;
+  vertical-align: bottom;
+  color: $--color-primary;
+  width: 30px;
+}
+
+.el-menu, .el-submenu{
+  .el-menu-item{
+    .svg-icon{
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+    }
+  }
+}
+
+// 关闭按钮
+ .el-icon-circle-close {
+  color: #fff;
+}
