@@ -1,0 +1,79 @@
+# dev配置
+server:
+    tomcat:
+        uri-encoding: UTF-8
+        max-threads: 1000
+        min-spare-threads: 30
+    port: 8081
+
+
+spring:
+    servlet:
+        #上传文件相关
+        multipart:
+            max-file-size: 5MB
+            max-request-size: 5MB
+            enabled: true
+    jackson:
+          date-format: yyyy-MM-dd HH:mm:ss #时间格式化，返回json时间类型
+    #数据库配置
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        druid:
+            url: jdbc:mysql://127.0.0.1:3306/info_report_v2.000_tb1?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=GMT%2b8
+            username: root
+            password: root
+            initial-size: 5
+            max-active: 30
+            min-idle: 5
+            max-wait: 60000
+            pool-prepared-statements: true
+            max-pool-prepared-statement-per-connection-size: 20
+            time-between-eviction-runs-millis: 60000
+            min-evictable-idle-time-millis: 300000
+            test-while-idle: true
+            test-on-borrow: false
+            test-on-return: false
+    rabbitmq:
+        host: 122.112.147.72
+        port: 60672
+        username: user_rabbit
+        password: hykj68566486
+        virtual-host: hy_vhost
+        connection-timeout: 2000ms
+
+#系统参数配置
+core:
+    config:
+        host-name: http://127.0.0.1:8081
+        msg-api: http://127.0.0.1:8089
+        thrift-host: localhost
+        thrift-port: 10299
+        cf-pc-path: http://127.0.0.1:8089
+        cf-mobile-path: http://127.0.0.1
+        staff-group-type: 1,4,5
+        pms-school-ids: d3746e6564374233bffd66e3612c9924
+        template-msg-common-id: OPENTM410586156
+        template-msg-host: http://localhost:8089
+        dt-api: http://127.0.0.1:8081
+
+sso:
+    properties:
+        #PC端页面
+        service-name: http://127.0.0.1:9530
+        #sso server服务地址
+        sso-server-path: http://127.0.0.1:8443
+
+rabbitmq:
+    consumer:
+        producer-git-branch: dev-v3.2001
+        pms-exchange-name: ${rabbitmq.consumer.producer-git-branch}.pms_ex
+        pms-queue-name: ${rabbitmq.consumer.producer-git-branch}.pms-consumer.ir
+        pms-routing-key: ${rabbitmq.consumer.producer-git-branch}.pms.#
+        student-routing-key-prefix: ${rabbitmq.consumer.producer-git-branch}.pms.student.
+        staff-routing-key-prefix: ${rabbitmq.consumer.producer-git-branch}.pms.staff.
+        class-routing-key-prefix: ${rabbitmq.consumer.producer-git-branch}.pms.class.
+logging:
+    level:
+     cn.hy.infoReport.common.mapper : debug

@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: dev
+
+
+---
+spring:
+  profiles: prod
+  cloud:
+    config:
+      name: ir
+      profile: prod #
+      label: ${gitBranch} #分支名
+      uri: ${configServer} #请求配置文件地址
+
+
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      enabled: false

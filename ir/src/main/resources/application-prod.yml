@@ -1,0 +1,72 @@
+# prod配置
+server:
+    tomcat:
+        uri-encoding: UTF-8
+        max-threads: 1000
+        min-spare-threads: 30
+    port: 8080
+    servlet:
+      context-path: /ir-ws
+
+
+spring:
+    servlet:
+        #上传文件相关
+        multipart:
+            max-file-size: 5MB
+            max-request-size: 5MB
+            enabled: true
+    jackson:
+          date-format: yyyy-MM-dd HH:mm:ss #时间格式化，返回json时间类型
+    #数据库配置
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        druid:
+            url: jdbc:mysql://${ir.db.databaseName}?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8
+            username: ${ir.db.username}
+            password: ${ir.db.password}
+            initial-size: 5
+            max-active: 30
+            min-idle: 5
+            max-wait: 60000
+            pool-prepared-statements: true
+            max-pool-prepared-statement-per-connection-size: 20
+            time-between-eviction-runs-millis: 60000
+            min-evictable-idle-time-millis: 300000
+            test-while-idle: true
+            test-on-borrow: false
+            test-on-return: false
+    rabbitmq:
+        host: 122.112.147.72
+        port: 60672
+        username: user_rabbit
+        password: hykj68566486
+        virtual-host: hy_vhost
+        connection-timeout: 2000ms
+
+core:
+    config:
+        host-name: ${ir.constant.hostName}
+        thrift-host: ${ir.constant.thriftHost}
+        thrift-port: ${ir.constant.thriftPort}
+        staff-group-type: ${ir.constant.staffGroupType} #4.0为  1,4,5,6,7,8,9    3.0为1,4,5
+        pms-school-ids: ${ir.constant.pmsSchoolIds} #需要使用的学校id集合 以,分隔
+        template-msg-common-id: OPENTM410586156
+        template-msg-host: ${ir.constant.templateMsgHost}
+        dt-api: ${ir.constant.dtApi}
+sso:
+    properties:
+        #PC端页面
+        service-name: ${ir.sso.serviceName}
+        #sso server服务地址
+        sso-server-path: ${ir.sso.serverPath}
+rabbitmq:
+    consumer:
+        producer-git-branch: ${ir.rabbitmq.consumer.producerGitBranch} #生产者分支名 pms的分支名
+        pms-exchange-name: ${rabbitmq.consumer.producer-git-branch}.pms_ex
+        pms-queue-name: ${rabbitmq.consumer.producer-git-branch}.pms-consumer.ir
+        pms-routing-key: ${rabbitmq.consumer.producer-git-branch}.pms.#
+        student-routing-key-prefix: ${rabbitmq.consumer.producer-git-branch}.pms.student.
+        staff-routing-key-prefix: ${rabbitmq.consumer.producer-git-branch}.pms.staff.
+        class-routing-key-prefix: ${rabbitmq.consumer.producer-git-branch}.pms.class.
